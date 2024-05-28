@@ -2,6 +2,15 @@ import React from "react";
 import Image from "next/image";
 import { data } from "../../../../data/data.js";
 
+
+const colorMap = {
+  "primary-lightRed": "text-primary-lightRed bg-primary-lightRed",
+  "primary-orangeyYellow":
+    "text-primary-orangeyYellow bg-primary-orangeyYellow",
+  "primary-greenTeal": "text-primary-greenTeal bg-primary-greenTeal",
+  "primary-cobaltBlue": "text-primary-cobaltBlue bg-primary-cobaltBlue",
+};
+
 const Index = () => {
   return (
     <div className="flex flex-col md:flex md:flex-row rounded-3xl md:overflow-hidden md:w-[800px] md:h-[520px] bg-white shadow-2xl">
@@ -27,12 +36,16 @@ const Index = () => {
       {/* second card */}
       <div className="flex-1">
         <div className="p-6 flex flex-col h-full w-full">
-          <h1 className="md:text-3xl text-xl text-black font-semibold">Summary</h1>
+          <h1 className="md:text-3xl text-xl text-black font-semibold">
+            Summary
+          </h1>
 
           {data?.map((item, index) => (
             <div
               key={index}
-              className={`flex justify-between items-center gap-x-4f mt-4 p-3 rounded-xl bg-opacity-5  ${item.bgColor}`}
+              className={`flex justify-between items-center gap-x-4f mt-4 p-3 rounded-xl bg-opacity-5 ${
+                colorMap[item.color]
+              } ${item.bgColor}`}
             >
               <div className="flex gap-x-2 items-center">
                 <Image
@@ -52,10 +65,12 @@ const Index = () => {
               </div>
             </div>
           ))}
-{/* <div className="w"> */}
-              <button className="bg-black/80 text-white rounded-3xl w-full py-4 mt-10 font-semibold hover:bg-gradient-lightRoyalBlue">Continue</button>
+          {/* <div className="w"> */}
+          <button className="bg-black/80 text-white rounded-3xl w-full py-4 mt-10 font-semibold hover:bg-gradient-lightRoyalBlue">
+            Continue
+          </button>
 
-{/* </div> */}
+          {/* </div> */}
         </div>
       </div>
     </div>
